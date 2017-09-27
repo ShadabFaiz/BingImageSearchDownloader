@@ -14,45 +14,48 @@ interact with the browser such as click on images, drag & drop support etc.
 Now, we can scroll down and download images as many as we want.
 
 ###    2. HOW BING LOADS IMAGES
-Bing loads images in row wise. Each row is denoted by a <ul>.
-Each row/ul contains certain number of <li> with contains an image.
-For ex:
-    <ul ....> row 1.
-        <li....> image 1 in row 1
-        <li....> image 2 in row 1.
-                .
-                .
-                .
-                .
-        <li...> image N in row 1.
-    </ul>
-    <ul...> row 2.
-        <li....> image N+1 in row 2
-                .
-                .
-                .
-                .
-                .
-        <li>
-    </ul>
+Bing loads images in row wise. Each row is denoted by a ul.  
+Each row/ul contains certain number of li with contains an image.
+       
+       For ex:
+            <ul ....> row 1.
+                <li....> image 1 in row 1
+                <li....> image 2 in row 1.
+                        .
+                        .
+                        .
+                        .
+                <li...> image N in row 1.
+            </ul>
+            <ul...> row 2.
+                <li....> image N+1 in row 2
+                        .
+                        .
+                        .
+                        .
+                        .
+                <li>
+            </ul>
 
-    Each <li> contains a div class called img_cont hoff. This class has the images attributes with images link.
-    <li> image 1
-        <div..>
+Each <li> contains a div class called img_cont hoff. This class has the images attributes with images link.
+      
+      <li> image 1
+         <div..>
             .
             .
         <a class="iusc"..>    
             <div class="img_cont hoff" ...>
                 <img...>
-                </div>
-                    .
-                    .
+            </div>
+                .
+                .
             </div>
     </li>
 
-    Each <div class="img_cont hoff"> has 1 images.
+Each <div class="img_cont hoff"> has 1 images.
 
-    Overall structure.
+Overall structure.
+
     <ul data-row=row number....>
         <li...data-idx=image_index_no..>
             .....
