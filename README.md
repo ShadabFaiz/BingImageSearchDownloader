@@ -37,7 +37,7 @@ Each row/ul contains certain number of li with contains an image.
                 <li>
             </ul>
 
-Each <li> contains a div class called img_cont hoff. This class has the images attributes with images link.
+Each li contains a div class called img_cont hoff. This class has the images attributes with images link.
       
       <li> image 1
          <div..>
@@ -52,7 +52,7 @@ Each <li> contains a div class called img_cont hoff. This class has the images a
             </div>
     </li>
 
-Each <div class="img_cont hoff"> has 1 images.
+Each "div class="img_cont hoff"" has 1 images.
 
 Overall structure.
 
