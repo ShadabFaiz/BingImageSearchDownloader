@@ -68,7 +68,15 @@ Using this script, we can download as many images from Bing's image result as we
         * Send the appropriate request to the browser.
                 In our case, image name.
         At this point of time, 35 images have been loaded in the browser.
-        If you want more images, then scroll the page down
+        If you want more images, then scroll the page down with selenium or javascript.
+        * Get the page source.
+        * Check total no of images loaded. If enough of images are loaded, then go further else
+          again scroll down and get page source.  
+        * In page source, look for the image attribute we are interested in with regular expression.
+        * Get the src of images.
+        * Send the url to web, response will be an image.
+        * Save the images.
+
 # Prerequisites
     1.Languages
         * Python 3.6 or above
