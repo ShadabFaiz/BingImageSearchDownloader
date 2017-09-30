@@ -1,21 +1,29 @@
 # BingImageSearchDownloader
 Using this script, we can download as many images from Bing's image result as we want.  
+## UPDATES  
+    Main.py is for downloading the images as thumbnails whereas Main_V2.py is for
+    downloading images in their original size.
 ## WALKTHROUGH  
 ###    1. IDEAS
-        Earliest, the idea was to use Web Scrapping technique to download images.
-        But it was not a viable solution since the Bing loads only 35 images
-        by default. To load more images, we somehow needed to scroll down to load
-        more images, and also after loading 105 images, we need to click on "See more"
-        button to load more images. Web Scrapping does not provide us with ways to
-        interact with the browser.
+Earliest, the idea was to use Web Scrapping technique to download images.
+But it was not a viable solution since the Bing loads only 35 images
+by default. To load more images, we somehow needed to scroll down to load
+more images, and also after loading 105 images, we need to click on "See more"
+button to load more images. Web Scrapping does not provide us with ways to
+interact with the browser.
 
-        So i switch to Selenium. It is an automation testing tool. It allowed us to
-        interact with the browser such as click on images, drag & drop support etc.
-        Now, we can scroll down and download images as many as we want.
+So i switch to Selenium. It is an automation testing tool. It allowed us to
+interact with the browser such as click on images, drag & drop support etc.
+Now, we can scroll down and download images as many as we want.
 
 ###    2. HOW BING LOADS IMAGES
+        Bing loads images first as thumbnails. When we click on the images, then the images will
+        load in their original sizes. Main.py walkthrough is for thumbnails whereas Main_V2.py is
+        for images of their original size.  
+
+####   Main.py
         Bing loads images in row wise. Each row is denoted by a <ul>.
-        Each row/ul contains certain number of <li> with contains an image.
+        Each row/ul contains certain number of <li> which contains an image.
         For ex:
             <ul ....> row 1.
                 <li....> image 1 in row 1
@@ -60,8 +68,19 @@ Using this script, we can download as many images from Bing's image result as we
                         <div class="img_cont hoff"..>
                             <img....> // We want this.
 
-        So we needed a regular expression to find that particular image attribute for us.
+        So we needed a regular expression to find that particular image attribute for us.  
+
+####    Main_V2.py  
+        This WALKTHROUGH is for Bing loading the image of their original size.
+        When all the image's thumbnails are loaded in their thumbnails form and we click on it,
+        An image attribute with class "mainImage accessible nofocus" is made visible.
+        This attribute represent only the images which is currently infocus or clicked, also
+        contains the url for the image. Due to this, there is only 1 image attribute with
+        such class. But before we search for it, we have to wait for this attribute to be visible.
+        After it is visible, take the src from img(class=mainImage accessible nofocus).
+        Now we have image url. We can send the url to net and retrieve the images.
 ###    3. WORKFLOW
+####    Main.py
         * Initialize the browser instances.
                 Here, we are using Chrome as a browser. You can use any other browser as long as
                 it is supported by Selenium and its driver is available.
@@ -76,7 +95,23 @@ Using this script, we can download as many images from Bing's image result as we
         * In page source, look for the image attribute we are interested in with regular expression.
         * Get the src of images.
         * Send the url to web, response will be an image.
-        * Save the images.
+        * Save the images.  
+
+####    Main_V2.py
+        * Initialize the browser instances.
+                Here, we are using Chrome as a browser. You can use any other browser as long as
+                it is supported by Selenium and its driver is available.
+        * Creating the url with the image name.
+        * Send the appropriate request with the url to the browser.
+                In our case, image name.
+        * Click the first image.
+        * Wait for img(class="mainImage accessible nofocus") to become visible.
+        * Take the url in the src of the above img attribute.
+        * Send the url to the net.
+        * Retrieved response will be an image.
+        * Save the image.
+        * Click on the "Next img" button to load the next image.
+        * Repeat until we get required no of images.
 
 # Prerequisites
 ####    1.Languages
