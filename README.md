@@ -1,5 +1,15 @@
 # BingImageSearchDownloader
-Using this script, we can download as many images from Bing's image result as we want.  
+Using this script, we can download as many images from Bing's image result as we want.
+
+# FEATURES
+    * Download any number of images you want. Be it 1 image or 500 images or 1000+ images.
+    * Download images of any size we want. Currently supports:  
+        * 640*480
+        * 800*600
+        * 1024*768
+        * 1600*1200
+        * 2272*1704
+        * 2816*2112
 ## UPDATES  
     Main.py is for downloading the images as thumbnails whereas Main_V2.py is for
     downloading images in their original size.
