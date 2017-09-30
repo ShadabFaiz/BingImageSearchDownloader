@@ -44,29 +44,24 @@ Now, we can scroll down and download images as many as we want.
                 <li>
             </ul>
 
-            Each <li> contains a div class called img_cont hoff. This class has the images attributes with images link.
-            <li> image 1
-                <div..>
-                    .
-                    .
-                <a class="iusc"..>    
-                    <div class="img_cont hoff" ...>
-                        <img...>
-                        </div>
-                            .
-                            .
-                    </div>
-            </li>
+Each li contains a div class called img_cont hoff. This class has the images attributes with images link.
 
-            Each <div class="img_cont hoff"> has 1 images.
+      <li> image 1
+         <div..>
+            .
+            .
+        <a class="iusc"..>    
+            <div class="img_cont hoff" ...>
+                <img...>
+            </div>
+                .
+                .
+            </div>
+    </li>
 
-            Overall structure.
-            <ul data-row=row number....>
-                <li...data-idx=image_index_no..>
-                    .....
-                    <a class="iusc"...>
-                        <div class="img_cont hoff"..>
-                            <img....> // We want this.
+Each "div class="img_cont hoff"" has 1 images.
+
+Overall structure.
 
         So we needed a regular expression to find that particular image attribute for us.  
 
