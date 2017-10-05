@@ -11,11 +11,17 @@ import os
 
 print("Beginning BingImageSearchDownloader.....")
 
-# initializing chrome instances
+# initializi    ng chrome instances
 browser = webdriver.Chrome("F:\\Drivers\\Chrome\\chromedriver.exe")
 header = {}
 img_size = ["_640_480", "_800_600", "_1024_768", "_1600_1200", "_2272_1704", "_2816_2112"]
 waitTime = 10
+
+
+def saveError_To_TxtFile(error):
+    errorFile = open("./logs.txt", "a")
+    errorFile.write(error+"\n")
+    errorFile.close()
 
 
 def setHeader():
@@ -88,7 +94,7 @@ def go_To_NextImage():
         next_image_btn = browser.find_element_by_xpath("//a[@id=\"iol_navr\"]")
         ActionChains(browser).move_to_element(next_image_btn).click(next_image_btn).perform()
     except TimeoutException:
-        print("Trying to refresh the page due to TimeoutException.")
+        saveError_To_TxtFile("Trying to refresh the page due to TimeoutException.")
         browser.refresh()
 
 
@@ -108,8 +114,9 @@ def startDownload(first_div_class, img_to_search):
                 go_To_NextImage()
                 counter += 1
         except Exception as ex:
-            print("Something haapened in startDownload()", ex)
-            raise SystemExit
+            print(ex)
+            saveError_To_TxtFile(str(counter) + img_link + " \n" + ex)
+            go_To_NextImage()
 
 
 def startSearching(imagesToSearch, sizes, image_quantity_required):
@@ -127,7 +134,7 @@ def startSearching(imagesToSearch, sizes, image_quantity_required):
             print("Success")
 
 
-imgs_to_search = ["Batman", "The Flash", "Hulk"]
+imgs_to_search = ["dog", "Human", "wood", "Tree"]
 size = 1
-image_quantity_required = 5
+image_quantity_required = 700
 startSearching(imgs_to_search, size, image_quantity_required)
